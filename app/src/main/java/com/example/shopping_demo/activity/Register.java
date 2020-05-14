@@ -32,8 +32,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CustomBottomSheetDialogFragment extends Activity {
-    private static final String TAG = CustomBottomSheetDialogFragment.class.getSimpleName();
+public class Register extends Activity {
+    private static final String TAG = Register.class.getSimpleName();
     private Button btnRegister;
     private Button btnLinkToLogin;
     private EditText inputFullName;
@@ -71,7 +71,7 @@ public class CustomBottomSheetDialogFragment extends Activity {
         // Check if user is already logged in or not
         if (session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
-            Intent intent = new Intent(CustomBottomSheetDialogFragment.this,
+            Intent intent = new Intent(Register.this,
                     MainActivity.class);
             startActivity(intent);
             finish();
@@ -97,7 +97,7 @@ public class CustomBottomSheetDialogFragment extends Activity {
 
                     // Launch login activity
                     Intent intent = new Intent(
-                            CustomBottomSheetDialogFragment.this,
+                            Register.this,
                             LoginActivity.class);
                     startActivity(intent);
                     finish();

@@ -41,8 +41,8 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String url = "http://192.168.1.100/Online%20Shopping%20Portal%20project/shopping/images1/";
-    private static final String URL_PRODUCTS = " http://192.168.1.100/Online%20Shopping%20Portal%20project/shopping/Api.php";
+    private static final String url = "http://192.168.43.99/Online%20Shopping%20Portal%20project/shopping/images1/";
+    private static final String URL_PRODUCTS = " http://192.168.43.99/Online%20Shopping%20Portal%20project/shopping/Api.php";
     ArrayList<Product> productList;
 
     private TextView txtName;
@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recylcerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        mProductAdapter = new ProductAdapter(MainActivity.this,productList);
-        recyclerView.setAdapter(mProductAdapter);
+       /* mProductAdapter = new ProductAdapter(MainActivity.this,productList);
+        recyclerView.setAdapter(mProductAdapter);*/
         // userprofile();
         loadProducts();
 
@@ -173,8 +173,8 @@ public class MainActivity extends AppCompatActivity {
                                 productList.add(product);
 
                             } //creating adapter object and setting it to recyclerview
-                           // ProductAdapter adapter = new ProductAdapter(MainActivity.this, productList);
-                          //  recyclerView.setAdapter(adapter);
+                            ProductAdapter adapter = new ProductAdapter(MainActivity.this, productList);
+                            recyclerView.setAdapter(adapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = CustomBottomSheetDialogFragment.class.getSimpleName();
+    private static final String TAG = Register.class.getSimpleName();
     private Button btnLogin;
     private EditText inputEmail;
     private EditText inputPassword;
@@ -116,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),
-                        CustomBottomSheetDialogFragment.class);
+                        Register.class);
                 startActivity(i);
                 finish();
             }
