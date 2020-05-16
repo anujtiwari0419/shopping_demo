@@ -27,8 +27,8 @@
         android:layout_height="wrap_content"
         android:text="info@codinginflow.com" />
 
-    <!--<Button android:id="@+id/logout"
+    <Button android:id="@+id/logout"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="Logout"/>-->
+        android:text="Logout"/>
 </LinearLayout>

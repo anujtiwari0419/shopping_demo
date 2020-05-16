@@ -5,19 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -36,7 +34,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -71,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         View header = mNavigationView.getHeaderView(0);
         txtName = header.findViewById(R.id.mName);
         txtEmail = header.findViewById(R.id.mEmail);
+       // mNavigationView.setNavigationItemSelectedListener(this);
 
 
         sp = getSharedPreferences("Login", MODE_PRIVATE);
@@ -94,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         recyclerView = findViewById(R.id.recylcerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         recyclerView.setHasFixedSize(true);
        /* mProductAdapter = new ProductAdapter(MainActivity.this,productList);
         recyclerView.setAdapter(mProductAdapter);*/
@@ -103,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       /* //logout event click
+      /*  //logout event click
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +110,16 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
 
+    }
+
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.log_out:
+                logout();
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
    /* private void userprofile() {
@@ -140,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
      * Logging out the user. Will set isLoggedIn flag to false in shared
      * preferences Clears the user data from sqlite users table
      */
-    private void logoutUser() {
+    private void logout() {
         session.setLogin(false);
 
         db.deleteUsers();
